@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Cookie & Storage Toolkit",
   "short_name": "Storage Toolkit",
-  "version": "2.0",
+  "version": "2.1",
   "description": "Manage cookies, localStorage, and sessionStorage with import, export, editing, migration, and encrypted cookie files.",
   "minimum_chrome_version": "114",
   "permissions": [
