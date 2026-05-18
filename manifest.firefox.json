@@ -47,7 +47,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "cookie-storage-toolkit@hadesker.dev",
+      "id": "cookie-manager-pro@hadesker.dev",
       "data_collection_permissions": {
         "required": [
           "none"

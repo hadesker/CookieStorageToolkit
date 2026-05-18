@@ -9,8 +9,7 @@
     "cookies",
     "downloads",
     "scripting",
-    "sidePanel",
-    "tabs"
+    "sidePanel"
   ],
   "host_permissions": [
     "http://*/*",
