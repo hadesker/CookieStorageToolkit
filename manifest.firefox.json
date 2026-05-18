@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Cookie & Storage Toolkit",
+  "short_name": "Storage Toolkit",
+  "version": "2.0",
+  "description": "Manage cookies, localStorage, and sessionStorage with import, export, editing, migration, and encrypted cookie files.",
+  "permissions": [
+    "cookies",
+    "downloads",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "16": "src/assets/icons/icon16.png",
+    "32": "src/assets/icons/icon32.png",
+    "48": "src/assets/icons/icon48.png",
+    "128": "src/assets/icons/icon128.png"
+  },
+  "background": {
+    "scripts": [
+      "src/background/background.js"
+    ]
+  },
+  "action": {
+    "default_title": "Open Cookie & Storage Toolkit",
+    "default_icon": {
+      "16": "src/assets/icons/icon16.png",
+      "32": "src/assets/icons/icon32.png",
+      "48": "src/assets/icons/icon48.png",
+      "128": "src/assets/icons/icon128.png"
+    }
+  },
+  "sidebar_action": {
+    "default_title": "Cookie & Storage Toolkit",
+    "default_panel": "src/sidepanel/sidepanel.html",
+    "default_icon": {
+      "16": "src/assets/icons/icon16.png",
+      "32": "src/assets/icons/icon32.png",
+      "48": "src/assets/icons/icon48.png",
+      "128": "src/assets/icons/icon128.png"
+    },
+    "open_at_install": false
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cookie-storage-toolkit@hadesker.dev",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
+}
