@@ -1160,6 +1160,18 @@ document.addEventListener('DOMContentLoaded', () => {
     return stores.find((store) => store.tabIds?.includes(tabId))?.id || null;
   }
 
+  async function getAvailableCookieStoreIds() {
+    if (!chromeApi?.cookies?.getAllCookieStores) return null;
+
+    try {
+      const stores = await chromeApi.cookies.getAllCookieStores();
+      return new Set(stores.map((store) => store.id).filter(Boolean));
+    } catch (err) {
+      console.warn('Could not read cookie stores', err);
+      return null;
+    }
+  }
+
   function dedupeCookies(cookies) {
     const unique = new Map();
     cookies.forEach((cookie) => unique.set(cookieKey(cookie), cookie));
@@ -2311,10 +2323,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let successCount = 0;
     let failCount = 0;
+    const availableStoreIds = await getAvailableCookieStoreIds();
+    const normalizeOptions = {
+      preserveStoreId: Boolean(availableStoreIds),
+      availableStoreIds
+    };
 
     for (const cookie of cookies) {
       try {
-        const newCookie = normalizeImportedCookie(cookie);
+        const newCookie = normalizeImportedCookie(cookie, normalizeOptions);
         const result = await chromeApi.cookies.set(newCookie);
         if (result) successCount++;
         else failCount++;
@@ -2503,22 +2520,40 @@ document.addEventListener('DOMContentLoaded', () => {
     return `.${cleanDomain}`;
   }
 
-  function normalizeImportedCookie(cookie) {
+  function normalizeImportedCookie(cookie, options = {}) {
+    const sameSite = normalizeImportedSameSite(cookie.sameSite);
+    const secure = Boolean(cookie.secure) || sameSite === 'no_restriction';
+    const domain = String(cookie.domain || '').trim();
+    const expirationDate = Number(cookie.expirationDate);
+    const shouldPreserveStoreId = options.preserveStoreId !== false;
     const normalized = {
-      url: cookieToUrl(cookie),
+      url: cookieToUrl({ ...cookie, secure }),
       name: String(cookie.name || ''),
       value: String(cookie.value || ''),
       path: cookie.path || '/',
-      secure: Boolean(cookie.secure),
+      secure,
       httpOnly: Boolean(cookie.httpOnly)
     };
 
-    if (cookie.domain && cookie.hostOnly !== true) normalized.domain = cookie.domain;
-    if (cookie.sameSite) normalized.sameSite = cookie.sameSite;
-    if (cookie.storeId) normalized.storeId = cookie.storeId;
-    if (cookie.expirationDate) normalized.expirationDate = cookie.expirationDate;
+    if (domain && cookie.hostOnly !== true) normalized.domain = domain.replace(/^\./, '');
+    if (sameSite) normalized.sameSite = sameSite;
+    if (
+      shouldPreserveStoreId &&
+      cookie.storeId &&
+      (!options.availableStoreIds || options.availableStoreIds.has(cookie.storeId))
+    ) {
+      normalized.storeId = cookie.storeId;
+    }
+    if (Number.isFinite(expirationDate) && expirationDate > 0) normalized.expirationDate = expirationDate;
 
     return normalized;
+  }
+
+  function normalizeImportedSameSite(value) {
+    const normalized = String(value || '').toLowerCase();
+    if (normalized === 'none') return 'no_restriction';
+    if (['no_restriction', 'lax', 'strict'].includes(normalized)) return normalized;
+    return '';
   }
 
   function normalizePageStorageItems(items) {
