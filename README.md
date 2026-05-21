@@ -76,8 +76,8 @@ node scripts/build-extension.js firefox zip
 The zip files are created at:
 
 ```text
-dist/chrome-v2.0.zip
-dist/firefox-v2.0.zip
+dist/chrome-vx.zip
+dist/firefox-vx.zip
 ```
 
 The zip file names use the current manifest version. The build script removes older zip files for the same target and creates clean store upload files without macOS hidden files such as `.DS_Store`, `._*`, or `__MACOSX`.

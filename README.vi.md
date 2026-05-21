@@ -76,8 +76,8 @@ node scripts/build-extension.js firefox zip
 File zip được tạo tại:
 
 ```text
-dist/chrome-v2.0.zip
-dist/firefox-v2.0.zip
+dist/chrome-vx.zip
+dist/firefox-vx.zip
 ```
 
 Tên file zip dùng version hiện tại trong manifest. Build script sẽ xoá zip cũ của cùng target và tạo file upload store sạch, không chứa file ẩn của macOS như `.DS_Store`, `._*` hoặc `__MACOSX`.
