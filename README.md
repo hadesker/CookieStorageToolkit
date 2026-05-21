@@ -4,6 +4,11 @@
 
 Cookie & Storage Toolkit is a browser extension for inspecting, editing, importing, exporting, and migrating cookies, localStorage, and sessionStorage from a compact side panel or sidebar.
 
+## Store Links
+
+- Chrome Web Store: [Cookie & Storage Toolkit](https://chromewebstore.google.com/detail/ibbjhkkeikgmhcnokkalllgligkimmeg) (pending review)
+- Firefox Add-ons: [Cookie & Storage Toolkit](https://addons.mozilla.org/vi/firefox/addon/cookie-storage-toolkit/)
+
 ## Screenshots
 
 ![Cookie Manager screenshot](store-listing/cookie-manager.png)

@@ -4,6 +4,11 @@
 
 Cookie & Storage Toolkit là browser extension giúp xem, sửa, import, export và migrate cookie, localStorage, sessionStorage ngay trong Side Panel hoặc Sidebar của trình duyệt.
 
+## Link Store
+
+- Chrome Web Store: [Cookie & Storage Toolkit](https://chromewebstore.google.com/detail/ibbjhkkeikgmhcnokkalllgligkimmeg) (đang chờ duyệt)
+- Firefox Add-ons: [Cookie & Storage Toolkit](https://addons.mozilla.org/vi/firefox/addon/cookie-storage-toolkit/)
+
 ## Screenshots
 
 ![Cookie Manager screenshot](store-listing/cookie-manager.png)
