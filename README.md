@@ -6,7 +6,7 @@ Cookie & Storage Toolkit is a browser extension for inspecting, editing, importi
 
 ## Store Links
 
-- Chrome Web Store: [Cookie & Storage Toolkit](https://chromewebstore.google.com/detail/ibbjhkkeikgmhcnokkalllgligkimmeg) (pending review)
+- Chrome Web Store: [Cookie & Storage Toolkit](https://chromewebstore.google.com/detail/ibbjhkkeikgmhcnokkalllgligkimmeg) 
 - Firefox Add-ons: [Cookie & Storage Toolkit](https://addons.mozilla.org/vi/firefox/addon/cookie-storage-toolkit/)
 
 ## Screenshots
